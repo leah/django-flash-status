@@ -1,10 +1,10 @@
 {% for statusmsg in request.flash.statuses %}
     <div id="flash-status-{{ forloop.counter }}" class="flash-status">
-        {{ statusmsg }} <a href="#" onclick="$j($j(this).parent().get(0)).fadeOut(); return false;">close</a>
+        {{ statusmsg }}
     </div>
 {% endfor %}
 {% for errormsg in request.flash.errors %}
     <div id="flash-error-{{ forloop.counter }}" class="flash-error">
-        {{ errormsg }} <a href="#" onclick="$j($j(this).parent().get(0)).fadeOut(); return false;">close</a>
+        {{ errormsg }}
     </div>
 {% endfor %}
