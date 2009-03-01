@@ -1,0 +1,52 @@
+# Django Flash Status
+
+A tiny and simple add-on to django-flash to add and display multiple status and error messages for a user. Feedback welcome!
+
+
+## Usage
+
+You can add a status message like so:
+
+request.add_status('Your settings were successfully updated!')
+
+You can add an error message like so:
+
+request.add_error('All form fields are required. Please see errors below.')
+
+In fact you can add any type of a message to a list of messages like so:
+
+request.add_message('zings', 'Your mom.')
+request.add_message('zings', 'That\'s what she said.')
+
+
+## Setup
+
+First you'll need to have django-flash installed. You can find it on GitHub at:
+http://github.com/danielfm/django-flash/
+
+To use django-flash-status you'll need both FlashMiddleware and FlashStatusMiddleware included in your middleware settings.
+
+MIDDLEWARE_CLASSES = (
+    ...
+    'djangoflash.middleware.FlashMiddleware',
+    'djangoflashstatus.middleware.FlashStatusMiddleware',
+    ...
+)
+
+That's all!
+
+To use the flash.html template you'll need to include the django-flash context processors in your TEMPLATE_CONTEXT_PROCESSORS setting.
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    ...
+    'djangoflash.context_processors.flash',
+    ...
+)
+
+You'll also need to add djangoflashstatus to your INSTALLED_APPS so your project can find the template. Alternately, you can the location of this template to your TEMPLATE_DIRS setting.
+
+INSTALLED_APPS = (
+    ...
+    'djangoflashstatus', # flash.html template
+    ...
+)
